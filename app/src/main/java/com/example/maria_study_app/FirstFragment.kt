@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.location.LocationManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,23 +25,13 @@ import java.util.concurrent.ConcurrentLinkedQueue
 class FirstFragment: Fragment() {
 
     private lateinit var binding: FirstFragmentLayoutBinding
-    private val prefs by inject<SharedPreferences>()
-    private val repo by inject<Repository>()
-    private val vm by sharedViewModel<FragmentOneVm>()
-    private val a by lazy { MyAdapter() }
+    private val vm by viewModel<FragmentOneVm>()
+    private val adapter by lazy { MyAdapter() }
 
     companion object {
         const val SHARED_PREFS_NAME = "PREFS"
         const val SAVED_TEXT_KEY = "KEY"
     }
-
-    override fun onAttach(context: Context) {
-        val a = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        val b = a.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-
-        super.onAttach(context)
-    }
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -59,45 +50,20 @@ class FirstFragment: Fragment() {
         }
         lifecycleScope.launchWhenStarted {
             vm.factsFlow.onEach {
-                // что делать и как отобразить полученные факты
+                it?.let {
+                    adapter.setNewList(it.data)
+                }
             }.collect()
         }
     }
 
     private fun initViews() {
         binding.apply {
-
-            tv.text = prefs.getString(SAVED_TEXT_KEY, "")
-
+            recycler.adapter = adapter
             button.setOnClickListener {
-                val text = et.text.toString()
-                prefs.edit().putString(SAVED_TEXT_KEY, text).apply()
-                tv.text = text
-                generateNote()
-            }
-            val a = ConcurrentLinkedQueue<Int>()
-
-
-        }
-    }
-
-    private fun generateNote() {
-        val generator = UUID.randomUUID()
-        lifecycleScope.launchWhenCreated {
-            withContext(Dispatchers.IO) {
-                repo.insertNote(
-                    MyEntity(
-                        generator.toString(),
-                        generator.toString(),
-                        binding.et.text.toString(),
-                        System.currentTimeMillis()
-                    )
-                )
-            }
-            withContext(Dispatchers.Main) {
-                Toast.makeText(requireContext(), "SUCCESS", Toast.LENGTH_SHORT).show()
-                binding.et.text.clear()
+                vm.getFacts(10)
             }
         }
     }
+
 }
