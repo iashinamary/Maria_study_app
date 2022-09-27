@@ -17,36 +17,36 @@ class SecondFragment: Fragment() {
     private val repo by inject<Repository>()
     private val adapter = MyAdapter()
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
+//    override fun onAttach(context: Context) {
+//        super.onAttach(context)
+//    }
+//
+//
+//    override fun onCreateView(
+//        inflater: LayoutInflater,
+//        container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View {
+//        binding = SecondFragmentLayoutBinding.inflate(inflater, container, false)
+//
+//        return binding.root
+//    }
+//
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        initViews()
+//        subscribe()
+//    }
+
+//    private fun subscribe() {
+//        repo.getAllNotes().observe(viewLifecycleOwner){
+//            Log.d("@@@", it.size.toString())
+//            adapter.setNewList(it)
+//
+//        }
     }
 
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = SecondFragmentLayoutBinding.inflate(inflater, container, false)
-
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initViews()
-        subscribe()
-    }
-
-    private fun subscribe() {
-        repo.getAllNotes().observe(viewLifecycleOwner){
-            Log.d("@@@", it.size.toString())
-            adapter.setNewList(it)
-
-        }
-    }
-
-    private fun initViews() {
-        binding.recycler.adapter = adapter
-    }
-}
+//    private fun initViews() {
+//        binding.recycler.adapter = adapter
+//    }
+//}
