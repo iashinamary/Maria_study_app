@@ -15,6 +15,15 @@
         app:layout_constraintBottom_toTopOf="@id/button"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         />
+    <EditText
+        android:id="@+id/et"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:textColor="@color/black"
+        android:background="#7EFFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        android:inputType="phone"
+        />
 
 
     <Button

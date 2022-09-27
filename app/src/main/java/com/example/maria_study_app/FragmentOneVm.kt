@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
+import java.util.*
 
 class FragmentOneVm(
     private val apiService: ApiService
@@ -16,6 +17,7 @@ class FragmentOneVm(
 
 //    val factsFlow = MutableSharedFlow<CatFactsNew>(0, 500, onBufferOverflow = BufferOverflow.SUSPEND)
     val factsFlow: MutableStateFlow<CatFactsNew?> = MutableStateFlow(null)
+
 
 
     fun getFacts(limit: Int){
@@ -33,5 +35,6 @@ class FragmentOneVm(
 //        viewModelScope.launch {
 //            val facts = result.await()
 //        }
+
     }
 }

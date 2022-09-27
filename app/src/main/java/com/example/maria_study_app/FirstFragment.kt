@@ -61,7 +61,8 @@ class FirstFragment: Fragment() {
         binding.apply {
             recycler.adapter = adapter
             button.setOnClickListener {
-                vm.getFacts(10)
+                val limit = et.text.toString().toInt()
+                vm.getFacts(limit)
             }
         }
     }
