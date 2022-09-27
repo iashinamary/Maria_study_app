@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.maria_study_app.databinding.FirstFragmentLayoutBinding
@@ -19,6 +20,7 @@ import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.lang.Exception
 import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
 
@@ -38,6 +40,7 @@ class FirstFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        ContextCompat.startForegroundService(requireContext(), )
         binding = FirstFragmentLayoutBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -61,8 +64,14 @@ class FirstFragment: Fragment() {
         binding.apply {
             recycler.adapter = adapter
             button.setOnClickListener {
-                val limit = et.text.toString().toInt()
-                vm.getFacts(limit)
+                try {
+                    val limit = et.text.toString().toInt()
+                    vm.getFacts(limit)
+                } catch (e: Exception){
+                    Toast.makeText(requireContext(), "Enter number", Toast.LENGTH_LONG).show()
+                    e.printStackTrace()
+                    et.text.clear()
+                }
             }
         }
     }

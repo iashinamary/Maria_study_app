@@ -25,6 +25,9 @@ class FragmentOneVm(
             val facts = apiService.getInfo(limit)
 //            factsLive.postValue(facts)
             factsFlow.tryEmit(facts)
+            /**
+             * Скаченные шутки записывать в базу данных
+             */
 
         }
 //        val result = viewModelScope.async {
