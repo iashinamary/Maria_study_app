@@ -21,8 +21,17 @@ val module = module {
     }
 
     single {
+        get<MyDataBase>().getFactsDao()
+    }
+
+    single {
+        FactsRepository(get())
+    }
+
+    single {
         Repository(get<MyDataBase>().getMyDao())
     }
+
 
     single {
         androidContext().getSharedPreferences("Prefs", Context.MODE_PRIVATE)
@@ -37,6 +46,6 @@ val module = module {
     }
 
     viewModel {
-        FragmentOneVm(get())
+        FragmentOneVm(get(), get())
     }
 }

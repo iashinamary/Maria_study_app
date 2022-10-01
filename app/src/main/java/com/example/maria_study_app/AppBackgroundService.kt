@@ -18,7 +18,7 @@ class AppBackgroundService : Service() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         when(intent!!.getStringExtra("")){
-            ON_START_COMMAND -> { startSocket() }
+            ON_START_COMMAND -> {  }
             ON_EXIT_COMMAND -> {
                 stopSelf()
             }

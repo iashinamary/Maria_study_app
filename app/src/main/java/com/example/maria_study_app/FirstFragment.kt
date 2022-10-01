@@ -5,9 +5,8 @@ import android.content.SharedPreferences
 import android.location.LocationManager
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -40,6 +39,8 @@ class FirstFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        setHasOptionsMenu(true)
+        //todo
         ContextCompat.startForegroundService(requireContext(), )
         binding = FirstFragmentLayoutBinding.inflate(inflater, container, false)
         return binding.root
@@ -57,6 +58,34 @@ class FirstFragment: Fragment() {
                     adapter.setNewList(it.data)
                 }
             }.collect()
+        }
+    }
+
+    /**
+     * dz
+     */
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        val search =  menu.getItem(R.id.search) as SearchView
+        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                TODO("Not yet implemented")
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                TODO("Not yet implemented")
+            }
+        })
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        super.onPrepareOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.exit -> {}
+            R.id.search -> {}
         }
     }
 

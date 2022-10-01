@@ -8,27 +8,26 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import java.util.*
 
 class FragmentOneVm(
-    private val apiService: ApiService
-): ViewModel() {
+    private val apiService: ApiService,
+    private val repo: FactsRepository
+) : ViewModel() {
 
 //    val scope = CoroutineScope(Job() + Dispatchers.IO)
 
     val factsLive = MutableLiveData<CatFactsNew>()
 
-//    val factsFlow = MutableSharedFlow<CatFactsNew>(0, 500, onBufferOverflow = BufferOverflow.SUSPEND)
+    //    val factsFlow = MutableSharedFlow<CatFactsNew>(0, 500, onBufferOverflow = BufferOverflow.SUSPEND)
     val factsFlow: MutableStateFlow<CatFactsNew?> = MutableStateFlow(null)
 
 
-
-    fun getFacts(limit: Int){
+    fun getFacts(limit: Int) {
         viewModelScope.launch(Dispatchers.IO) {
             val facts = apiService.getInfo(limit)
 //            factsLive.postValue(facts)
             factsFlow.tryEmit(facts)
-            /**
-             * Скаченные шутки записывать в базу данных
-             */
-
+            facts.data.forEach {
+                repo.addFact(it.toCatFactEntity())
+            }
         }
 //        val result = viewModelScope.async {
 //            return@async apiService.getInfo(limit)
