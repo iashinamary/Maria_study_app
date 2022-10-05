@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.*
 import java.util.*
 
 class FragmentOneVm(
@@ -16,27 +16,35 @@ class FragmentOneVm(
 
     val factsLive = MutableLiveData<CatFactsNew>()
 
+    private val userQueryFlow = MutableStateFlow("")
+
     //    val factsFlow = MutableSharedFlow<CatFactsNew>(0, 500, onBufferOverflow = BufferOverflow.SUSPEND)
-    val factsFlow: MutableStateFlow<CatFactsNew?> = MutableStateFlow(null)
+    val factsFlow: StateFlow<List<CatFacts>> = userQueryFlow.flatMapLatest { query->
+        repo.getFactsByQuery(query)
+    }
+        .map { list->
+            list.map{ entity->
+                CatFacts(
+                    entity.fact,
+                    entity.fact.length
+                )
+            }
+        }
+        .stateIn(viewModelScope, SharingStarted.Eagerly, repo.getFactsByQuerySingle(userQueryFlow.value).map { CatFacts(it.fact, it.fact.length) })
 
 
     fun getFacts(limit: Int) {
         viewModelScope.launch(Dispatchers.IO) {
             val facts = apiService.getInfo(limit)
-//            factsLive.postValue(facts)
-            factsFlow.tryEmit(facts)
             facts.data.forEach {
                 repo.addFact(it.toCatFactEntity())
             }
         }
-//        val result = viewModelScope.async {
-//            return@async apiService.getInfo(limit)
-//        }
-//
-//
-//        viewModelScope.launch {
-//            val facts = result.await()
-//        }
+    }
 
+    fun setNewQuery(newText: String?) {
+        newText?.let {
+            userQueryFlow.value = newText
+        }
     }
 }

@@ -1,18 +1,15 @@
 package com.example.maria_study_app
 
-import android.content.Context
-import android.content.SharedPreferences
-import android.location.LocationManager
+
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.maria_study_app.databinding.FirstFragmentLayoutBinding
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.withContext
@@ -41,7 +38,7 @@ class FirstFragment: Fragment() {
     ): View {
         setHasOptionsMenu(true)
         //todo
-        ContextCompat.startForegroundService(requireContext(), )
+//        ContextCompat.startForegroundService(requireContext(), )
         binding = FirstFragmentLayoutBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -55,7 +52,7 @@ class FirstFragment: Fragment() {
         lifecycleScope.launchWhenStarted {
             vm.factsFlow.onEach {
                 it?.let {
-                    adapter.setNewList(it.data)
+                    adapter.setNewList(it)
                 }
             }.collect()
         }
@@ -68,11 +65,12 @@ class FirstFragment: Fragment() {
         val search =  menu.getItem(R.id.search) as SearchView
         search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                TODO("Not yet implemented")
+                return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                TODO("Not yet implemented")
+                vm.setNewQuery(newText)
+                return true
             }
         })
         super.onCreateOptionsMenu(menu, inflater)
@@ -84,9 +82,13 @@ class FirstFragment: Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.exit -> {}
-            R.id.search -> {}
+            R.id.exit -> {
+            }
+            R.id.search -> {
+
+            }
         }
+        return false
     }
 
     private fun initViews() {

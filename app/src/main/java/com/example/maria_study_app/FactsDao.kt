@@ -15,4 +15,11 @@ interface FactsDao {
 
     @Query("SELECT * FROM facts")
     fun getAllFacts(): Flow<List<CatFactEntity>>
+
+    @Query("SELECT * FROM facts WHERE fact LIKE :query OR  :query== '' ")
+    fun getFactsByQuery(query: String): Flow<List<CatFactEntity>>
+
+    @Query("SELECT * FROM facts WHERE fact LIKE :query OR  :query== '' ")
+    fun getFactsByQuerySingle(query: String): List<CatFactEntity>
+
 }
