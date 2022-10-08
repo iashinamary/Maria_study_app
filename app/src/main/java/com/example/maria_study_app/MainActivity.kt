@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = MainActivityLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         sharedPrefs = getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE)
         binding.navigation.setOnItemSelectedListener {
             when(it.itemId){

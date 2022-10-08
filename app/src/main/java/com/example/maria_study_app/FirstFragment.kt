@@ -2,23 +2,19 @@ package com.example.maria_study_app
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.SearchView
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.maria_study_app.databinding.FirstFragmentLayoutBinding
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.withContext
-import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.lang.Exception
 import java.util.*
-import java.util.concurrent.ConcurrentLinkedQueue
+
 
 class FirstFragment: Fragment() {
 
@@ -45,42 +41,46 @@ class FirstFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as AppCompatActivity?)!!.setSupportActionBar(binding.toolbar)
         initViews()
         vm.factsLive.observe(viewLifecycleOwner){
             // что делать и как отобразить полученные факты
         }
         lifecycleScope.launchWhenStarted {
             vm.factsFlow.onEach {
-                it?.let {
+                it.let {
                     adapter.setNewList(it)
                 }
             }.collect()
         }
     }
 
-    /**
-     * dz
-     */
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        val search =  menu.getItem(R.id.search) as SearchView
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.tool_menu, menu)
+        val search =  menu.findItem(R.id.search).actionView as SearchView
         search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
+                Log.d("@@@", "Text changed: ")
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 vm.setNewQuery(newText)
+                Log.d("@@@", "Text changed: $newText")
                 return true
             }
         })
-        super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {
+        Log.d("@@@", "Text changed: ")
         super.onPrepareOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        Log.d("@@@", "Text changed: ")
         when(item.itemId){
             R.id.exit -> {
             }

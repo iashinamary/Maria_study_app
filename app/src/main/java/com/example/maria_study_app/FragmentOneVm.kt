@@ -1,5 +1,6 @@
 package com.example.maria_study_app
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -44,6 +45,7 @@ class FragmentOneVm(
 
     fun setNewQuery(newText: String?) {
         newText?.let {
+            Log.d("@@@", "VM: $it")
             userQueryFlow.value = newText
         }
     }
