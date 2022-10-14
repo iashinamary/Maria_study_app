@@ -75,18 +75,23 @@ class FirstFragment: Fragment() {
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {
-        Log.d("@@@", "Text changed: ")
+        val logger = Test()
+        val logText = "Text changed: "
+        Log.d("@@@", logText)
+        val result = logger.logText(logText)
+        Log.d("@@@", "Is write to file successful: $result")
         super.onPrepareOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        Log.d("@@@", "Text changed: ")
+        //TODO
+        /**
+         *  Сделать мгновенный выход из приложения по нажатию пункта меню
+         */
         when(item.itemId){
             R.id.exit -> {
             }
-            R.id.search -> {
 
-            }
         }
         return false
     }
