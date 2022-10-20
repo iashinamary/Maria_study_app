@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
+import java.lang.Exception
 import java.util.*
 
 class FragmentOneVm(
@@ -36,10 +37,17 @@ class FragmentOneVm(
 
     fun getFacts(limit: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            val facts = apiService.getInfo(limit)
-            facts.data.forEach {
-                repo.addFact(it.toCatFactEntity())
+            try {
+                val facts = apiService.getInfo(limit)
+                facts.data.forEach {
+                    repo.addFact(it.toCatFactEntity())
+                }
+            } catch (e : Exception){
+                e.printStackTrace()
+            } finally {
+
             }
+
         }
     }
 

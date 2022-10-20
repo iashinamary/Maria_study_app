@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.*
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -21,6 +22,7 @@ class FirstFragment: Fragment() {
     private lateinit var binding: FirstFragmentLayoutBinding
     private val vm by viewModel<FragmentOneVm>()
     private val adapter by lazy { MyAdapter() }
+    private val permissionUtil = PermissionUtil()
 
     companion object {
         const val SHARED_PREFS_NAME = "PREFS"
@@ -43,6 +45,7 @@ class FirstFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (activity as AppCompatActivity?)!!.setSupportActionBar(binding.toolbar)
         initViews()
+        checkPermission()
         vm.factsLive.observe(viewLifecycleOwner){
             // что делать и как отобразить полученные факты
         }
@@ -55,6 +58,34 @@ class FirstFragment: Fragment() {
         }
     }
 
+    private fun checkPermission() {
+        if (!permissionUtil.hasPermissions(requireContext())) {
+            val resultLauncher =
+                registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                    doOnPermission()
+                }
+            permissionUtil.registerLauncher(resultLauncher)
+            val oldResultLauncher =
+                registerForActivityResult(ActivityResultContracts.RequestPermission()) { result ->
+                    if (result) {
+                        doOnPermission()
+                    }
+                }
+            permissionUtil.oldRegisterLauncher(oldResultLauncher)
+            permissionUtil.requestPermissions(requireActivity())
+        }
+
+    }
+
+    private fun doOnPermission() {
+        if (permissionUtil.hasPermissions(requireContext())) {
+            Toast.makeText(
+                requireContext(),
+                "permission",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
