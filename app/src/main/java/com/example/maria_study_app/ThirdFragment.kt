@@ -40,6 +40,6 @@ class ThirdFragment: Fragment() {
     }
 
     private fun initViews() {
-        binding.textview.text = prefs.getString(FirstFragment.SAVED_TEXT_KEY, "")
+        binding.textview.text = Test.readLines().toString()
             }
         }

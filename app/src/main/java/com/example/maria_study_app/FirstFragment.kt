@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
+import kotlin.system.exitProcess
 
 
 class FirstFragment: Fragment() {
@@ -22,7 +23,8 @@ class FirstFragment: Fragment() {
     private lateinit var binding: FirstFragmentLayoutBinding
     private val vm by viewModel<FragmentOneVm>()
     private val adapter by lazy { MyAdapter() }
-    private val permissionUtil = PermissionUtil()
+    private val permissionUtil = PermissionUtil
+    private var logText = ""
 
     companion object {
         const val SHARED_PREFS_NAME = "PREFS"
@@ -93,24 +95,26 @@ class FirstFragment: Fragment() {
         val search =  menu.findItem(R.id.search).actionView as SearchView
         search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                Log.d("@@@", "Text changed: ")
+                logText = "Text changed: $query"
+                Log.d("@@@", logText)
+                Test.logText(logText)
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 vm.setNewQuery(newText)
-                Log.d("@@@", "Text changed: $newText")
+                logText = "Text changed: $newText"
+                Log.d("@@@", logText)
+                Test.logText(logText)
                 return true
             }
         })
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {
-        val logger = Test()
-        val logText = "Text changed: "
+        logText = "Menu is prepared to be displayed"
         Log.d("@@@", logText)
-        val result = logger.logText(logText)
-        Log.d("@@@", "Is write to file successful: $result")
+        Test.logText(logText)
         super.onPrepareOptionsMenu(menu)
     }
 
@@ -121,6 +125,10 @@ class FirstFragment: Fragment() {
          */
         when(item.itemId){
             R.id.exit -> {
+                logText = "Successful exit"
+                Log.d("@@@", logText)
+                Test.logText(logText)
+                exitProcess(0)
             }
 
         }
