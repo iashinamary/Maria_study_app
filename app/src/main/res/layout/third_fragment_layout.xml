@@ -6,14 +6,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <TextView
-        android:id="@+id/textview"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#3BFFFFFF"
-        android:textColor="@color/black"
-        android:scrollbars = "vertical"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#3BFFFFFF"
+            android:textColor="@color/black"
+            android:scrollbars = "vertical"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </ScrollView>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

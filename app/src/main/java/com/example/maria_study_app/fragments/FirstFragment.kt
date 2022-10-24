@@ -1,4 +1,4 @@
-package com.example.maria_study_app
+package com.example.maria_study_app.fragments
 
 
 import android.os.Bundle
@@ -10,15 +10,15 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import com.example.maria_study_app.*
 import com.example.maria_study_app.databinding.FirstFragmentLayoutBinding
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.util.*
 import kotlin.system.exitProcess
 
 
-class FirstFragment: Fragment() {
+class FirstFragment : Fragment() {
 
     private lateinit var binding: FirstFragmentLayoutBinding
     private val vm by viewModel<FragmentOneVm>()
@@ -48,7 +48,7 @@ class FirstFragment: Fragment() {
         (activity as AppCompatActivity?)!!.setSupportActionBar(binding.toolbar)
         initViews()
         checkPermission()
-        vm.factsLive.observe(viewLifecycleOwner){
+        vm.factsLive.observe(viewLifecycleOwner) {
             // что делать и как отобразить полученные факты
         }
         lifecycleScope.launchWhenStarted {
@@ -61,26 +61,26 @@ class FirstFragment: Fragment() {
     }
 
     private fun checkPermission() {
-        if (!permissionUtil.hasPermissions(requireContext())) {
+        if (!PermissionUtil.hasPermissions(requireContext())) {
             val resultLauncher =
                 registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                     doOnPermission()
                 }
-            permissionUtil.registerLauncher(resultLauncher)
+            PermissionUtil.registerLauncher(resultLauncher)
             val oldResultLauncher =
                 registerForActivityResult(ActivityResultContracts.RequestPermission()) { result ->
                     if (result) {
                         doOnPermission()
                     }
                 }
-            permissionUtil.oldRegisterLauncher(oldResultLauncher)
-            permissionUtil.requestPermissions(requireActivity())
+            PermissionUtil.oldRegisterLauncher(oldResultLauncher)
+            PermissionUtil.requestPermissions(requireActivity())
         }
 
     }
 
     private fun doOnPermission() {
-        if (permissionUtil.hasPermissions(requireContext())) {
+        if (PermissionUtil.hasPermissions(requireContext())) {
             Toast.makeText(
                 requireContext(),
                 "permission",
@@ -92,7 +92,7 @@ class FirstFragment: Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.tool_menu, menu)
-        val search =  menu.findItem(R.id.search).actionView as SearchView
+        val search = menu.findItem(R.id.search).actionView as SearchView
         search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 logText = "Text changed: $query"
@@ -123,12 +123,23 @@ class FirstFragment: Fragment() {
         /**
          *  Сделать мгновенный выход из приложения по нажатию пункта меню
          */
-        when(item.itemId){
+        when (item.itemId) {
             R.id.exit -> {
                 logText = "Successful exit"
                 Log.d("@@@", logText)
                 Test.logText(logText)
                 exitProcess(0)
+            }
+            R.id.about -> {
+//                AlertDialog.Builder(requireContext())
+//                    .setMessage("Hello")
+//                    .setCancelable(false)
+//                    .setPositiveButton("OK") { d, w -> }
+//                    .setNegativeButton("Cancel"){d, w ->
+//                        d.dismiss()
+//                    }
+//                    .show()
+                parentFragmentManager.beginTransaction().add(MyDialog(), null).commit()
             }
 
         }
@@ -142,7 +153,7 @@ class FirstFragment: Fragment() {
                 try {
                     val limit = et.text.toString().toInt()
                     vm.getFacts(limit)
-                } catch (e: Exception){
+                } catch (e: Exception) {
                     Toast.makeText(requireContext(), "Enter number", Toast.LENGTH_LONG).show()
                     e.printStackTrace()
                     et.text.clear()

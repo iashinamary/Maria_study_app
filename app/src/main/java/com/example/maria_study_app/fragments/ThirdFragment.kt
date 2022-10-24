@@ -1,4 +1,4 @@
-package com.example.maria_study_app
+package com.example.maria_study_app.fragments
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -7,11 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.maria_study_app.databinding.FirstFragmentLayoutBinding
+import com.example.maria_study_app.Test
 import com.example.maria_study_app.databinding.ThirdFragmentLayoutBinding
 import org.koin.android.ext.android.inject
 
 class ThirdFragment: Fragment() {
+
+
 
     private lateinit var binding: ThirdFragmentLayoutBinding
     private val prefs by inject<SharedPreferences>()
@@ -40,6 +42,10 @@ class ThirdFragment: Fragment() {
     }
 
     private fun initViews() {
-        binding.textview.text = Test.readLines().toString()
-            }
+        val array = Test.readLines()
+        array.forEach {
+            binding.textview.text = "${binding.textview.text}\n$it"
         }
+
+    }
+}

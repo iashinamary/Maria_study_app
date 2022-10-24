@@ -54,7 +54,7 @@ object Test {
         readLogAsByteArray().decodeToString()
     }
 
-    fun readLogAsByteArray(): ByteArray {
+    private fun readLogAsByteArray(): ByteArray {
         return file.readBytes()
     }
 

@@ -1,14 +1,8 @@
-package com.example.maria_study_app
+package com.example.maria_study_app.fragments
 
-import android.content.Context
-import android.content.SharedPreferences
-import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.maria_study_app.databinding.FirstFragmentLayoutBinding
+import com.example.maria_study_app.MyAdapter
+import com.example.maria_study_app.Repository
 import com.example.maria_study_app.databinding.SecondFragmentLayoutBinding
 import org.koin.android.ext.android.inject
 

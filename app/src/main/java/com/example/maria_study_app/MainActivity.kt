@@ -3,13 +3,11 @@ package com.example.maria_study_app
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.maria_study_app.databinding.MainActivityLayoutBinding
-import com.google.gson.Gson
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-
+import com.example.maria_study_app.fragments.FirstFragment
+import com.example.maria_study_app.fragments.SecondFragment
+import com.example.maria_study_app.fragments.ThirdFragment
 
 
 class MainActivity : AppCompatActivity() {
