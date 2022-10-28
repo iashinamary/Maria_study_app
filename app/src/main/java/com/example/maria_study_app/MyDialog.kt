@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import com.example.maria_study_app.databinding.DialogLayoutBinding
 
 class MyDialog : DialogFragment() {
 
@@ -16,9 +17,11 @@ class MyDialog : DialogFragment() {
      * раскидать по папкам классы
      */
 
-//    private lateinit var binding:
+    private lateinit var binding: DialogLayoutBinding
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        this.isCancelable = false
+
         return super.onCreateDialog(savedInstanceState)
     }
 
@@ -31,13 +34,15 @@ class MyDialog : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        return super.onCreateView(inflater, container, savedInstanceState)
+        binding = DialogLayoutBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initViews()
     }
+
 
     override fun onDestroy() {
         super.onDestroy()
@@ -45,5 +50,11 @@ class MyDialog : DialogFragment() {
 
     override fun onDetach() {
         super.onDetach()
+    }
+
+    private fun initViews(){
+        binding.dialogButton.setOnClickListener{
+            dismiss()
+        }
     }
 }

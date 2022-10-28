@@ -1,4 +1,4 @@
-package com.example.maria_study_app
+package com.example.maria_study_app.adapter
 
 
 import android.view.View

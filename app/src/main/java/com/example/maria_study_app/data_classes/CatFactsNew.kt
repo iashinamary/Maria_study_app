@@ -1,6 +1,6 @@
-package com.example.maria_study_app
+package com.example.maria_study_app.data_classes
 
-import com.example.maria_study_app.data_classes.Link
+import com.example.maria_study_app.CatFacts
 
 data class CatFactsNew(
     val current_page: Int,

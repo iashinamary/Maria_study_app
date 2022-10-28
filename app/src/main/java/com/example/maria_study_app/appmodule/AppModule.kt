@@ -3,6 +3,11 @@ package com.example.maria_study_app
 import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.maria_study_app.api.Api
+import com.example.maria_study_app.api.ApiService
+import com.example.maria_study_app.repository.FactsRepository
+import com.example.maria_study_app.repository.MyDataBase
+import com.example.maria_study_app.repository.Repository
 import com.example.maria_study_app.viewmodels.FragmentOneVm
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel

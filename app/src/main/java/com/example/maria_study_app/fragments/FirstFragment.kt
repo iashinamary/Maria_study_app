@@ -11,7 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.maria_study_app.*
+import com.example.maria_study_app.adapter.MyAdapter
 import com.example.maria_study_app.databinding.FirstFragmentLayoutBinding
+import com.example.maria_study_app.viewmodels.FragmentOneVm
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel

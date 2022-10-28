@@ -1,8 +1,8 @@
 package com.example.maria_study_app.fragments
 
 import androidx.fragment.app.Fragment
-import com.example.maria_study_app.MyAdapter
-import com.example.maria_study_app.Repository
+import com.example.maria_study_app.adapter.MyAdapter
+import com.example.maria_study_app.repository.Repository
 import com.example.maria_study_app.databinding.SecondFragmentLayoutBinding
 import org.koin.android.ext.android.inject
 

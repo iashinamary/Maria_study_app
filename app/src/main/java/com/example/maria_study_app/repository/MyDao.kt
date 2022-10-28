@@ -1,4 +1,4 @@
-package com.example.maria_study_app
+package com.example.maria_study_app.repository
 
 import androidx.lifecycle.LiveData
 import androidx.room.*

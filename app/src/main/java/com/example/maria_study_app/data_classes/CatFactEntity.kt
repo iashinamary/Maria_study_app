@@ -1,4 +1,4 @@
-package com.example.maria_study_app
+package com.example.maria_study_app.data_classes
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

@@ -3,4 +3,7 @@
     <string name="save_button_text">Save</string>
     <string name="exit">exit</string>
     <string name="search">Search</string>
+    <string name="about">About</string>
+    <string name="description">This app is for checking facts about cats</string>
+    <string name="ok">OK</string>
 </resources>

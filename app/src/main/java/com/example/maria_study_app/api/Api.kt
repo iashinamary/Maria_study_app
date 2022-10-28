@@ -1,4 +1,4 @@
-package com.example.maria_study_app
+package com.example.maria_study_app.api
 
 import com.example.maria_study_app.data_classes.CatFactsNew
 import retrofit2.http.*
