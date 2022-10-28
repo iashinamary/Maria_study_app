@@ -1,6 +1,6 @@
 package com.example.maria_study_app
 
-import android.security.identity.IdentityCredential
+import com.example.maria_study_app.data_classes.CatFactsNew
 import retrofit2.http.*
 
 interface Api {

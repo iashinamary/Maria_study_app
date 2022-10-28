@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.maria_study_app.data_classes.CatFactEntity
 import kotlinx.coroutines.flow.Flow
 
 

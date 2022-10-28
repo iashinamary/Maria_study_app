@@ -1,6 +1,7 @@
 package com.example.maria_study_app
 
 import androidx.lifecycle.LiveData
+import com.example.maria_study_app.data_classes.MyEntity
 
 class Repository(
     private val dao: MyDao

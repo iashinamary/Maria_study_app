@@ -1,6 +1,6 @@
 package com.example.maria_study_app
 
-import androidx.room.Query
+import com.example.maria_study_app.data_classes.CatFactEntity
 
 class FactsRepository(private val dao: FactsDao) {
 
