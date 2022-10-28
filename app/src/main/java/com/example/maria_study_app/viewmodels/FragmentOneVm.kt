@@ -5,8 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.maria_study_app.*
-import com.example.maria_study_app.api.ApiService
-import com.example.maria_study_app.data_classes.CatFactsNew
+import com.example.maria_study_app.data.remote.api.ApiService
+import com.example.maria_study_app.domain.models.CatFacts
+import com.example.maria_study_app.domain.models.CatFactsNew
+import com.example.maria_study_app.domain.models.toCatFactEntity
 import com.example.maria_study_app.repository.FactsRepository
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*

@@ -2,7 +2,7 @@ package com.example.maria_study_app.repository
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.maria_study_app.data_classes.MyEntity
+import com.example.maria_study_app.domain.models.MyEntity
 
 
 @Dao

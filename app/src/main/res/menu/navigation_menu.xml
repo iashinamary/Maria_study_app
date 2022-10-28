@@ -2,15 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/first_fragment_button"
+        android:id="@+id/firstFragment"
         android:title="First Fragment"/>
 
     <item
-        android:id="@+id/second_fragment_button"
+        android:id="@+id/secondFragment"
         android:title="Second Fragment"/>
 
     <item
-        android:id="@+id/third_fragment_button"
+        android:id="@+id/thirdFragment"
         android:title="Third Fragment"/>
 
 </menu>

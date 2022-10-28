@@ -1,4 +1,4 @@
-package com.example.maria_study_app
+package com.example.maria_study_app.ui.utils
 
 import android.Manifest
 import android.app.Activity
@@ -10,9 +10,7 @@ import android.os.Build
 import android.os.Environment
 import android.provider.Settings
 import androidx.activity.result.ActivityResultLauncher
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 
 
 object PermissionUtil {

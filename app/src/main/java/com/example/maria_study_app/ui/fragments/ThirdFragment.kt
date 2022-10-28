@@ -1,4 +1,4 @@
-package com.example.maria_study_app.fragments
+package com.example.maria_study_app.ui.fragments
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.maria_study_app.Test
+import com.example.maria_study_app.domain.utils.Test
 import com.example.maria_study_app.databinding.ThirdFragmentLayoutBinding
 import org.koin.android.ext.android.inject
 

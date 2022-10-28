@@ -1,4 +1,4 @@
-package com.example.maria_study_app.fragments
+package com.example.maria_study_app.ui.fragments
 
 
 import android.os.Bundle
@@ -10,9 +10,13 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.maria_study_app.*
-import com.example.maria_study_app.adapter.MyAdapter
+import com.example.maria_study_app.ui.adapter.MyAdapter
 import com.example.maria_study_app.databinding.FirstFragmentLayoutBinding
+import com.example.maria_study_app.domain.utils.Test
+import com.example.maria_study_app.ui.dialog.MyDialog
+import com.example.maria_study_app.ui.utils.PermissionUtil
 import com.example.maria_study_app.viewmodels.FragmentOneVm
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
@@ -141,7 +145,8 @@ class FirstFragment : Fragment() {
 //                        d.dismiss()
 //                    }
 //                    .show()
-                parentFragmentManager.beginTransaction().add(MyDialog(), null).commit()
+//                parentFragmentManager.beginTransaction().add(MyDialog(), null).commit()
+                findNavController().navigate(R.id.action_firstFragment_to_myDialog)
             }
 
         }

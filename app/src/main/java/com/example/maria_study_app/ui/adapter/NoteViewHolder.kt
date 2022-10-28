@@ -1,7 +1,6 @@
-package com.example.maria_study_app.adapter
+package com.example.maria_study_app.ui.adapter
 
 
-import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.maria_study_app.databinding.ItemNewBinding
 

@@ -1,6 +1,6 @@
 package com.example.maria_study_app.repository
 
-import com.example.maria_study_app.data_classes.CatFactEntity
+import com.example.maria_study_app.domain.models.CatFactEntity
 
 class FactsRepository(private val dao: FactsDao) {
 

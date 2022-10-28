@@ -1,8 +1,7 @@
-package com.example.maria_study_app
+package com.example.maria_study_app.ui
 
 import android.app.Application
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import com.example.maria_study_app.module
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin

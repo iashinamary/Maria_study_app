@@ -1,6 +1,4 @@
-package com.example.maria_study_app.data_classes
-
-import com.example.maria_study_app.CatFacts
+package com.example.maria_study_app.domain.models
 
 data class CatFactsNew(
     val current_page: Int,

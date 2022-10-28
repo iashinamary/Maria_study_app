@@ -1,7 +1,6 @@
-package com.example.maria_study_app
+package com.example.maria_study_app.service
 
 import android.app.Notification
-import android.app.NotificationChannel
 import android.app.Service
 import android.content.Intent
 import android.os.IBinder

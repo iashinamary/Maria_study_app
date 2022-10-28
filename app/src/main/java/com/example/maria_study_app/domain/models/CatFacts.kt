@@ -1,6 +1,5 @@
-package com.example.maria_study_app.data_classes
+package com.example.maria_study_app.domain.models
 
-import com.example.maria_study_app.data_classes.CatFactEntity
 import java.util.*
 
 

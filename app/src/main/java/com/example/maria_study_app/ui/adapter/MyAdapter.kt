@@ -1,11 +1,12 @@
-package com.example.maria_study_app.adapter
+package com.example.maria_study_app.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.maria_study_app.MyDiffUtil
+import com.example.maria_study_app.ui.utils.MyDiffUtil
 import com.example.maria_study_app.databinding.ItemNewBinding
+import com.example.maria_study_app.domain.models.CatFacts
 
 class MyAdapter: RecyclerView.Adapter<NoteViewHolder>() {
 

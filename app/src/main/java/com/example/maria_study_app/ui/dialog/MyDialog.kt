@@ -1,4 +1,4 @@
-package com.example.maria_study_app
+package com.example.maria_study_app.ui.dialog
 
 import android.app.Dialog
 import android.os.Bundle
@@ -33,7 +33,7 @@ class MyDialog : DialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DialogLayoutBinding.inflate(inflater, container, false)
         return binding.root
     }

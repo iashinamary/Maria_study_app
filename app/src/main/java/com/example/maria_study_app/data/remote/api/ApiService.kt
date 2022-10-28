@@ -1,6 +1,5 @@
-package com.example.maria_study_app.api
+package com.example.maria_study_app.data.remote.api
 
-import com.example.maria_study_app.api.Api
 
 class ApiService(private val api: Api) {
 

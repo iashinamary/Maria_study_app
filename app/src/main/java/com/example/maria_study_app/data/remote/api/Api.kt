@@ -1,6 +1,6 @@
-package com.example.maria_study_app.api
+package com.example.maria_study_app.data.remote.api
 
-import com.example.maria_study_app.data_classes.CatFactsNew
+import com.example.maria_study_app.domain.models.CatFactsNew
 import retrofit2.http.*
 
 interface Api {

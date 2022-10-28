@@ -1,6 +1,7 @@
-package com.example.maria_study_app
+package com.example.maria_study_app.ui.utils
 
 import androidx.recyclerview.widget.DiffUtil
+import com.example.maria_study_app.domain.models.CatFacts
 
 class MyDiffUtil(
     private val oldList: List<CatFacts>,
