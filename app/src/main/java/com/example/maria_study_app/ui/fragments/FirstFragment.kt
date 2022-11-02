@@ -146,7 +146,7 @@ class FirstFragment : Fragment() {
 //                    }
 //                    .show()
 //                parentFragmentManager.beginTransaction().add(MyDialog(), null).commit()
-                findNavController().navigate(R.id.action_firstFragment_to_myDialog)
+//                findNavController().navigate(R.id.action_firstFragment_to_myDialog)
             }
 
         }
