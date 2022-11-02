@@ -24,4 +24,8 @@
         android:id="@+id/myDialog"
         android:name="com.example.maria_study_app.ui.dialog.MyDialog"
         android:label="MyDialog" />
+    <fragment
+        android:id="@+id/image2"
+        android:name="com.example.maria_study_app.ui.fragments.Image"
+        android:label="Image" />
 </navigation>

@@ -13,4 +13,8 @@
         android:id="@+id/thirdFragment"
         android:title="Third Fragment"/>
 
+    <item
+        android:id="@+id/image2"
+        android:title="Image"/>
+
 </menu>
