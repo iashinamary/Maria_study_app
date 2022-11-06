@@ -41,7 +41,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:background="#40FFFFFF"
                 android:paddingHorizontal="10dp"
-                android:text="slkalskkdjlkaj"
+                android:text=""
 
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>

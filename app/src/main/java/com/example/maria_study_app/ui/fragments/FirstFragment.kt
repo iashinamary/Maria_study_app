@@ -34,6 +34,7 @@ class FirstFragment : Fragment() {
     private val permissionUtil = PermissionUtil
     private var logText = ""
 
+
     companion object {
         const val SHARED_PREFS_NAME = "PREFS"
         const val SAVED_TEXT_KEY = "KEY"

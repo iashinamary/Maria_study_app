@@ -3,10 +3,8 @@ package com.example.maria_study_app.ui
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.maria_study_app.R
 import com.example.maria_study_app.databinding.MainActivityLayoutBinding
