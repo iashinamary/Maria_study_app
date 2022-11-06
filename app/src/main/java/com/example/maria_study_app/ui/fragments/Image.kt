@@ -19,6 +19,12 @@ class Image : Fragment() {
 
     private lateinit var binding: ImageLayoutBinding
 
+    /**
+     *
+     * Сохранить в файлах телефона картинку и загрузить её с помощью глайд во фрагмент
+     * *Сохранённую картинку загрузить как массив байтов, положить в битмап и уже после загрузить глайдом
+     */
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
     }
