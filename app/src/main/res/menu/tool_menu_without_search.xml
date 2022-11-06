@@ -7,13 +7,9 @@
         android:title="back"
         android:icon="@drawable/ic_baseline_arrow_back_24"
         app:showAsAction="always"
+
         />
-    <item
-        android:id="@+id/search"
-        android:title="@string/search"
-        app:actionViewClass="android.widget.SearchView"
-        app:showAsAction="always"
-        />
+
 
     <item
         android:id="@+id/about"
@@ -26,5 +22,4 @@
         android:title="@string/exit"
         app:showAsAction="collapseActionView"
         />
-
 </menu>

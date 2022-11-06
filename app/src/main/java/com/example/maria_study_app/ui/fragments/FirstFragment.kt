@@ -8,7 +8,9 @@ import android.widget.SearchView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.maria_study_app.*
@@ -137,6 +139,8 @@ class FirstFragment : Fragment() {
                 exitProcess(0)
             }
             R.id.about -> {
+                parentFragmentManager.beginTransaction().add(MyDialog(), null).commit()
+                
 //                AlertDialog.Builder(requireContext())
 //                    .setMessage("Hello")
 //                    .setCancelable(false)
@@ -147,6 +151,9 @@ class FirstFragment : Fragment() {
 //                    .show()
 //                parentFragmentManager.beginTransaction().add(MyDialog(), null).commit()
 //                findNavController().navigate(R.id.action_firstFragment_to_myDialog)
+            }
+            R.id.back -> {
+                requireActivity().onBackPressed()
             }
 
         }
@@ -168,5 +175,6 @@ class FirstFragment : Fragment() {
             }
         }
     }
+
 
 }
