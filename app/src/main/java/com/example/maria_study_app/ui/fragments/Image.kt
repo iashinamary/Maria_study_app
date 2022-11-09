@@ -1,7 +1,9 @@
 package com.example.maria_study_app.ui.fragments
 
 import android.content.Context
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.os.Environment
 import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +12,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.GlideBuilder
 import com.example.maria_study_app.R
 import com.example.maria_study_app.databinding.ImageLayoutBinding
+import com.example.maria_study_app.domain.utils.Test
 import com.example.maria_study_app.ui.dialog.MyDialog
+import java.io.File
 import java.io.IOException
 import kotlin.system.exitProcess
 
@@ -41,25 +45,29 @@ class Image : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
+        val photopath = Environment.getExternalStorageDirectory().absolutePath + File.separator + "Download" + File.separator + "catInHat.jpg"
+        val photo = File(photopath)
+        val photoAsByteArray = photo.readBytes()
+        val bitmap = BitmapFactory.decodeByteArray(photoAsByteArray,0,photoAsByteArray.size)
         val url = "https://damion.club/uploads/posts/2022-02/thumbs/1644985609_21-damion-club-p-voskhod-na-more-priroda-29.jpg"
         Glide
             .with(requireContext())
-            .load(url)
+            .load(bitmap)
             .placeholder(resources.getDrawable(R.drawable.ic_launcher_background))
             .into(binding.image)
-         try {
-             throw Exception()
-        } catch (e : IOException){
-            Log.d("@@@", e.stackTraceToString())
-        } catch (e2 : IndexOutOfBoundsException){
-            e2.printStackTrace()
-        } catch (e : Exception){
-            try {
-                throw Exception()
-            } catch (e : Exception){}
-        } finally {
-             Log.d("@@@", "FINALLY")
-        }
+//         try {
+//             throw Exception()
+//        } catch (e : IOException){
+//            Log.d("@@@", e.stackTraceToString())
+//        } catch (e2 : IndexOutOfBoundsException){
+//            e2.printStackTrace()
+//        } catch (e : Exception){
+//            try {
+//                throw Exception()
+//            } catch (e : Exception){}
+//        } finally {
+//             Log.d("@@@", "FINALLY")
+//        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
